@@ -1,18 +1,19 @@
 package HotStuff;
 
-import DataCapsule.DataCapsule;
+import DataCapsule.*;
 import com.google.gson.Gson;
 
+/**
+ * Represents a proposal of changes associated to a replica
+ */
 public class Proposal {
-    int ReplicaID;
-    DataCapsule data;
+    ReplicaID id;
+    private final DataCapsule data;
 
-    public Proposal(int _uid, DataCapsule _data) {
-        ReplicaID = _uid;
+    public Proposal(ReplicaID _id, DataCapsule _data) {
+        id = _id;
         data = _data;
     }
-
-
 
     public Proposal parse(String json) { return (new Gson()).fromJson(json, Proposal.class); }
 

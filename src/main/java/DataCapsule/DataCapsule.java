@@ -7,16 +7,28 @@ import java.util.*;
  */
 
 public class DataCapsule<T> {
-    private ReplicaID id;
+    private ID id;
     private Log<T> log;
 
-    public DataCapsule(ReplicaID _uid) {
+    public DataCapsule(ID _uid) {
         id = _uid;
         log = new Log<T>();
     }
 
     public T append(T obj) {
         return log.append(obj);
+    }
+
+    public DataCapsule append(DataCapsule<T> obj) {
+        Iterator<T> iter = obj.iterator();
+        while (iter.hasNext()) {
+            append(iter.next());
+        }
+        return this;
+    }
+
+    public int size() {
+        return log.size();
     }
 
     public Iterator<T> iterator() {
