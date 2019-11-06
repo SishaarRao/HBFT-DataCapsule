@@ -1,4 +1,6 @@
-package DataCapsule;
+package HotStuff;
+
+import DataCapsule.ID;
 
 /**
  * Represents ReplicaID information pertaining to a HBFT Instance

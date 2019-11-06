@@ -7,9 +7,15 @@ import java.util.*;
  */
 
 public class DataCapsule<T> {
+    private static int global_id_counter = 0;
     private ID id;
     private Log<T> log;
 
+    public DataCapsule() {
+        id = new ID(global_id_counter);
+        log = new Log<T>();
+        global_id_counter++;
+    }
     public DataCapsule(ID _uid) {
         id = _uid;
         log = new Log<T>();

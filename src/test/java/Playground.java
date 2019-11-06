@@ -1,6 +1,6 @@
 import DataCapsule.*;
 import HotStuff.Proposal;
-import sun.reflect.annotation.ExceptionProxy;
+import HotStuff.ReplicaID;
 
 /**
  * Playground for testing out functionality, seeing how things work.

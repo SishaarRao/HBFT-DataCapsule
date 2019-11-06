@@ -1,7 +1,5 @@
 package HotStuff;
 
-import DataCapsule.ReplicaID;
-
 public class QuorumCertificate {
     ReplicaID id;
     ViewNumber viewNumber;

@@ -15,6 +15,10 @@ public class Proposal {
         data = _data;
     }
 
+    public DataCapsule getData() {
+        return data;
+    }
+
     public Proposal parse(String json) { return (new Gson()).fromJson(json, Proposal.class); }
 
     @Override
