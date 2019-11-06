@@ -7,11 +7,11 @@ import java.util.*;
  */
 
 public class DataCapsule<T> {
-    private int uid;
+    private ReplicaID id;
     private Log<T> log;
 
-    public DataCapsule(int _uid) {
-        this.uid = _uid;
+    public DataCapsule(ReplicaID _uid) {
+        id = _uid;
         log = new Log<T>();
     }
 
@@ -39,6 +39,6 @@ public class DataCapsule<T> {
     }
 
     public String toString() {
-        return String.format("-----%d-----\n%s", uid, log.toString());
+        return String.format("-----%s-----\n%s", id.toString(), log.toString());
     }
 }
