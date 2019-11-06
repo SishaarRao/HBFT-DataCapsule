@@ -7,16 +7,34 @@ import java.util.*;
  */
 
 public class DataCapsule<T> {
-    private int uid;
+    private static int global_id_counter = 0;
+    private ID id;
     private Log<T> log;
 
-    public DataCapsule(int _uid) {
-        this.uid = _uid;
+    public DataCapsule() {
+        id = new ID(global_id_counter);
+        log = new Log<T>();
+        global_id_counter++;
+    }
+    public DataCapsule(ID _uid) {
+        id = _uid;
         log = new Log<T>();
     }
 
     public T append(T obj) {
         return log.append(obj);
+    }
+
+    public DataCapsule append(DataCapsule<T> obj) {
+        Iterator<T> iter = obj.iterator();
+        while (iter.hasNext()) {
+            append(iter.next());
+        }
+        return this;
+    }
+
+    public int size() {
+        return log.size();
     }
 
     public Iterator<T> iterator() {
@@ -39,6 +57,6 @@ public class DataCapsule<T> {
     }
 
     public String toString() {
-        return String.format("-----%d-----\n%s", uid, log.toString());
+        return String.format("-----%s-----\n%s", id.toString(), log.toString());
     }
 }

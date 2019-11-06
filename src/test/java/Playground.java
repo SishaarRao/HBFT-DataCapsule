@@ -1,17 +1,17 @@
-import DataCapsule.DataCapsule;
-import sun.reflect.annotation.ExceptionProxy;
+import DataCapsule.*;
+import HotStuff.Proposal;
+import HotStuff.ReplicaID;
 
 /**
  * Playground for testing out functionality, seeing how things work.
  */
 public class Playground {
     public static void main(String[] args) {
-        DataCapsule<String> testing = new DataCapsule<String>(1);
+        DataCapsule<String> testing = new DataCapsule<String>(new ReplicaID(1));
         testing.append("This is the first test string");
-
-        try {Thread.sleep(2000); } catch(Exception e) { return; }
-
         testing.append("This is the second test string");
-        System.out.println(testing.toString());
+
+        Proposal proposal = new Proposal(1, testing);
+        System.out.println(proposal.toString());
     }
 }
