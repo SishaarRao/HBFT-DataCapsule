@@ -1,6 +1,6 @@
 package HotStuff;
 
-import DataCapsule.*;
+import DataCapsule.DataCapsule;
 import javafx.util.Pair;
 
 import java.util.List;
@@ -29,16 +29,22 @@ public class HotStuffCore {
         data.append(genesis);
     }
 
+    private void sanity_check_delivered(Block block) throws HotStuffException {
+        if (!block.delivered) {
+            throw new HotStuffException("Block was not delivered");
+        }
+    }
+
     /**
-     * Call to inform the state machine that a datacapsule is ready to be handled.
-     * A datacapsule is only delivered if itself is fetched, the datacapsule for the
+     * Call to inform the state machine that a Block is ready to be handled.
+     * A Block is only delivered if itself is fetched, the Block for the
      * contained qc is fetched and all parents are delivered. The user should
      * always ensure this invariant. The invalid blocks will be dropped by this
      * function.
-     * @param capsule
+     * @param block
      * @return true if valid
      */
-    public boolean on_deliver(DataCapsule capsule) {
+    public boolean on_deliver(Block block) {
         return false;
     }
 
